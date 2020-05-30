@@ -3,8 +3,20 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: {
+    apiKey: "AIzaSyDR_rVXcRctI-3zVDZB1YWVIy-kWDe3vHk",
+    authDomain: "the-vap-coffee.firebaseapp.com",
+    databaseURL: "https://the-vap-coffee.firebaseio.com",
+    projectId: "the-vap-coffee",
+    storageBucket: "the-vap-coffee.appspot.com",
+    messagingSenderId: "183127242930",
+    appId: "1:183127242930:web:8167f55e06ab4d3a2ab1ab",
+    measurementId: "G-LVLSY71ZTC"
+  }
 };
+
+
 
 /*
  * For easier debugging in development mode, you can import the following file
