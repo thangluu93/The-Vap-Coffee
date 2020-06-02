@@ -9,11 +9,11 @@ import { Product } from 'src/app/models/product';
 })
 export class HomePageComponent implements OnInit {
 
-  productList:Product[]=[];
-  constructor(public productService: ProductService) {}
+
+  constructor() {}
 
   ngOnInit(): void {
-    this.productList=this.productService.getProduct();
+  
   }
 
 

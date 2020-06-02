@@ -30,3 +30,9 @@ section {
     justify-content: center;
     width: 120px;
   }
+
+  .container{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }

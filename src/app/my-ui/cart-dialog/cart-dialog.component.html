@@ -1,0 +1,8 @@
+
+<div *ngIf="cartItem.length===0">Your cart is empty</div>
+ <ul >
+    <li *ngFor="let item of data">
+        <app-cart-item [cartItem]="item"></app-cart-item>
+    </li>
+    <li><strong>Total: </strong></li> {{cartTotal}} VND
+</ul>

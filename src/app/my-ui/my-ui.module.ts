@@ -7,18 +7,24 @@ import {MatCardModule} from '@angular/material/card';
 import { ProductItemComponent } from './product-item/product-item.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { MatButtonModule } from '@angular/material/button';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { CartItemComponent } from './cart-item/cart-item.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { CartDialogComponent } from './cart-dialog/cart-dialog.component';
 
 
 
 @NgModule({
-  declarations: [NavBarComponent, ProductItemComponent, ProductListComponent],
+  declarations: [NavBarComponent, ProductItemComponent, ProductListComponent, CartItemComponent, CartDialogComponent],
   imports: [
     CommonModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
+    FlexLayoutModule,
+    MatDialogModule,
     MatCardModule,
   ],
-  exports: [NavBarComponent, ProductItemComponent, ProductListComponent]
+  exports: [NavBarComponent, ProductItemComponent, ProductListComponent, CartItemComponent,CartDialogComponent]
 })
 export class MyUiModule { }
