@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Product } from '../models/product';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,18 +11,36 @@ export class MessengerService {
 
   subject = new Subject();
 
-  constructor() { }
+  constructor(public http: HttpClient) { }
 
   cart = [];
 
+
+
+
   sendMsg(product) {
     // console.log(product);
-   this.addProductTocart(product);
+    this.addProductTocart(product);
   }
 
   getMsg() {
     return this.cart;
   }
+
+  // getCheckout(data) {
+  //   return this.http.post(environment.ENPOINT + '/checkout', data);
+  // }
+
+  checkoutCart() {
+      this.http.post(environment.ENPOINT+'/checkout',this.cart).subscribe(data => {
+        console.log(data);
+      })
+   
+  }
+
+
+
+
 
   addProductTocart(product: Product) {
 
@@ -33,6 +53,7 @@ export class MessengerService {
         break;
       }
     }
+
     // console.log(productExsit);
     if (!productExsit) {
       this.cart.push({
@@ -42,8 +63,11 @@ export class MessengerService {
         qty: 1
       })
     }
-    console.log(this.cart);
 
   }
 
+}
+
+export interface Drink {
+  id: Number
 }

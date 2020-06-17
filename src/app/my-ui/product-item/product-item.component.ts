@@ -18,7 +18,6 @@ export class ProductItemComponent implements OnInit {
   }
 
   handleAddToCart(){
-    
     this.msg.sendMsg(this.productItem);
   }
 

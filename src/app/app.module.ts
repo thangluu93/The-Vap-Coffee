@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { MyUiModule } from './my-ui/my-ui.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginPageModule } from './pages/login-page/login-page.module';
+import { HttpClientModule } from '@angular/common/http';
+import { MakeLineService } from './services/make-line.service';
 
 @NgModule({
   declarations: [
@@ -26,12 +28,13 @@ import { LoginPageModule } from './pages/login-page/login-page.module';
     AngularFireAuthModule,
     AngularFirestoreModule,
 
-
+    //Server
+    HttpClientModule,
     MyUiModule,
     BrowserAnimationsModule,
     LoginPageModule
   ],
-  providers: [],
+  providers: [MakeLineService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

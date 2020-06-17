@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "..\\theVapCoffee-BackEnd"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "theVapCoffee-BackEnd"
+	}
+}

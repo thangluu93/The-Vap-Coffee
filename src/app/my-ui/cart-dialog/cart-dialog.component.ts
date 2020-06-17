@@ -31,32 +31,9 @@ export class CartDialogComponent implements OnInit {
     console.log(this.data);
   }
 
-  addProductTocart(product: Product) {
-
-    let productExsit = false;
-
-    for (let i in this.cartItem) {
-      if (this.cartItem[i].id === product.id) {
-        this.cartItem[i].qty++;
-        productExsit = true;
-        break;
-      }
-    }
-    // console.log(productExsit);
-    if (!productExsit) {
-      this.cartItem.push({
-        id: product.id,
-        name: product.name,
-        price: product.price,
-        qty: 1
-      })
-    }
-    console.log(this.cartItem);
-
+  checkoutCart(){
+    this.msg.checkoutCart();
   }
-
-
-
 }
 
 
