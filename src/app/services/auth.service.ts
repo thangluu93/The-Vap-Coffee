@@ -4,6 +4,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import * as firebase from 'firebase/app'
 import { auth } from 'firebase';
 import { Observable } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -11,23 +12,23 @@ import { Observable } from 'rxjs';
 export class AuthService {
 
   user$: Observable<User>;
-  constructor(public afAuth: AngularFireAuth,public afs:Angular) {
+  constructor(public afAuth: AngularFireAuth,public afs:AngularFirestore) {
     // this.afAuth.authState.subscribe(user => {
     //   this.user.email = user.email;
     //   this.user.name = user.displayName;
     //   this.user.photoURL = user.photoURL;
     // });
-    this.user$ = this.afAuth.authState.pipe(
-      switchMap(user => {
-          // Logged in
-        if (user) {
-          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
-        } else {
-          // Logged out
-          return of(null);
-        }
-      })
-    )
+    // this.user$ = this.afAuth.authState.pipe(
+    //   switchMap(user => {
+    //       // Logged in
+    //     if (user) {
+    //       return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+    //     } else {
+    //       // Logged out
+    //       return of(null);
+    //     }
+    //   })
+    // )
   }
 
 
