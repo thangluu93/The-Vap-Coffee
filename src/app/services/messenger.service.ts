@@ -33,14 +33,10 @@ export class MessengerService {
 
   checkoutCart() {
       this.http.post(environment.ENPOINT+'/checkout',this.cart).subscribe(data => {
-        console.log(data);
+        console.log(data);    
       })
    
   }
-
-
-
-
 
   addProductTocart(product: Product) {
 

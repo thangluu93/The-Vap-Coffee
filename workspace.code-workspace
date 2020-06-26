@@ -5,6 +5,15 @@
 		},
 		{
 			"path": "."
+		},
+		{
+			"path": "..\\..\\..\\StaticWeb2020S\\WereWolf-Server"
+		},
+		{
+			"path": "..\\..\\..\\StaticWeb2020S\\WereWolf-Angular"
+		},
+		{
+			"path": "..\\studentsManagement"
 		}
 	],
 	"settings": {

@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { Product } from 'src/app/models/product';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -16,22 +16,40 @@ export class CartDialogComponent implements OnInit {
   ];
 
   cartTotal = 0;
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    private msg: MessengerService) {
-  }
+  constructor(private msg: MessengerService, public http: HttpClient) { }
 
   ngOnInit(): void {
 
-    // this.msg.getMsg().subscribe((product: Product) => {
-    //   // console.log(product);
-    //   this.addProductTocart(product);
-    // });
+    this.cartItem= this.msg.getMsg();
 
-    console.log(this.data);
+    
   }
 
-  checkoutCart(){
+  addProductTocart(product: Product) {
+
+    let productExsit = false;
+
+    for (let i in this.cartItem) {
+      if (this.cartItem[i].id === product.id) {
+        this.cartItem[i].qty++;
+        productExsit = true;
+        break;
+      }
+    }
+    // console.log(productExsit);
+    if (!productExsit) {
+      this.cartItem.push({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        qty: 1
+      })
+
+    }
+  }
+
+
+  checkoutCart() {
     this.msg.checkoutCart();
   }
 }

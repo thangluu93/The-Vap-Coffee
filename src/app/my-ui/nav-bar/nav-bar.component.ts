@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { CartDialogComponent } from '../cart-dialog/cart-dialog.component';
 import { MessengerService } from 'src/app/services/messenger.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -12,7 +13,7 @@ import { MessengerService } from 'src/app/services/messenger.service';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(public router:Router,public dialog:MatDialog,public msg:MessengerService) { }
+  constructor(public router:Router,public dialog:MatDialog,public msg:MessengerService,public authService:AuthService) { }
 
   ngOnInit(): void {
   }
