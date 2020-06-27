@@ -6,14 +6,14 @@
                    <button mat-button (click)="router.navigate(['home'])">HOME</button>
                 </div>
                 <div class="heder-link-2">
-                  <button mat-button>Menu</button>
+                  <button mat-button (click)="router.navigate(['menu'])">Menu</button>
                 </div>
                 <div class="header-link-2">
                   <button mat-button>About Us</button>
                 </div>
             </div>
             <div class="logo">
-                <img src="../../../assets/logo.png" style="width: 100%; height: 70%; align-self: center;" >
+                <img src="../../../assets/logo.png" style="width: 100%; height: 70%; align-self: center; cursor: pointer;" (click)="router.navigate(['home'])" >
             </div>
             <div class="nav-bar-right">
               <button mat-button>  <mat-icon (click)="openDialog()">shopping_cart</mat-icon>   </button>
