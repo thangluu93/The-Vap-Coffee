@@ -11,11 +11,19 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { CartDialogComponent } from './cart-dialog/cart-dialog.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
 @NgModule({
-  declarations: [NavBarComponent, ProductItemComponent, ProductListComponent, CartItemComponent, CartDialogComponent],
+  declarations: [
+    NavBarComponent,
+    ProductItemComponent,
+    ProductListComponent,
+    CartItemComponent,
+    CartDialogComponent,
+    FooterComponent],
+
   imports: [
     CommonModule,
     MatToolbarModule,
