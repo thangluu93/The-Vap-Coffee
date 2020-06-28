@@ -1,14 +1,13 @@
 <mat-card class="example-card">
   <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
   <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>{{productItem.name}}</mat-card-title>
     <mat-card-title>{{productItem.price}},000</mat-card-title>
   </mat-card-header>
 
 
   <mat-card-actions>
-    <button mat-button (click)="handleAddToCart()">ADD TO CART</button>
+    <button mat-button (click)="handleAddToCart()" style="margin-left: 5%;">ADD TO CART</button>
     <button mat-button>VIEW DETAILS</button>
   </mat-card-actions>
 </mat-card>

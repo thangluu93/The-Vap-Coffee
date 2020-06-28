@@ -13,19 +13,16 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(public router:Router,public dialog:MatDialog,public msg:MessengerService,public authService:AuthService) { }
+  constructor(
+    public router:Router,
+    public dialog:MatDialog,
+    public msg:MessengerService,
+    public authService:AuthService
+    ) { }
 
   ngOnInit(): void {
   }
 
-  onClickLogin(){
-   this.router.navigate (['/login']);
-  }
-
-  onClickHome(){
-    this.router.navigate([''])
-  }
-  
   openDialog(): void {
     const dialogRef = this.dialog.open(CartDialogComponent, {
       width: '250px',
