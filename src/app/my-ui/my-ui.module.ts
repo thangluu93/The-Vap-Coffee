@@ -33,6 +33,14 @@ import { FooterComponent } from './footer/footer.component';
     MatDialogModule,
     MatCardModule,
   ],
-  exports: [NavBarComponent, ProductItemComponent, ProductListComponent, CartItemComponent,CartDialogComponent]
+  exports: [
+    NavBarComponent,
+    ProductItemComponent,
+    ProductListComponent,
+    CartItemComponent,
+    CartDialogComponent,
+    FooterComponent
+  ]
+
 })
 export class MyUiModule { }
