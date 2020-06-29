@@ -12,7 +12,7 @@ import { CartItemComponent } from './cart-item/cart-item.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { CartDialogComponent } from './cart-dialog/cart-dialog.component';
 import { FooterComponent } from './footer/footer.component';
-
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -32,6 +32,7 @@ import { FooterComponent } from './footer/footer.component';
     FlexLayoutModule,
     MatDialogModule,
     MatCardModule,
+    MatMenuModule
   ],
   exports: [
     NavBarComponent,
