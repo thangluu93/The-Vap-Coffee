@@ -1,65 +1,50 @@
 import { Injectable } from '@angular/core';
-
 import { AngularFireAuth } from "@angular/fire/auth";
-import * as firebase from 'firebase/app'
-import { auth } from 'firebase';
-import { Observable } from 'rxjs';
-import { AngularFirestore } from '@angular/fire/firestore';
-
+import { Observable, of } from 'rxjs';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
+import { User } from '../models/user.model';
+import { switchMap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  user$: Observable<User>;
-  constructor(public afAuth: AngularFireAuth,public afs:AngularFirestore) {
-    // this.afAuth.authState.subscribe(user => {
-    //   this.user.email = user.email;
-    //   this.user.name = user.displayName;
-    //   this.user.photoURL = user.photoURL;
-    // });
-    // this.user$ = this.afAuth.authState.pipe(
-    //   switchMap(user => {
-    //       // Logged in
-    //     if (user) {
-    //       return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
-    //     } else {
-    //       // Logged out
-    //       return of(null);
-    //     }
-    //   })
-    // )
+  constructor(
+    private afAuth: AngularFireAuth,
+    private db: AngularFirestore,
+    private router: Router) {
   }
 
+  user$: Observable<any>;
 
-
-  public user: User = {
-    email: '',
-    name: '',
-    photoURL: '',
-  }
-
-  isLogin = false;
-
-  uid: string = "";
-  loginWithGoogle() {
-    return new Promise<any>((resolve, reject) => {
-      let provider = new auth.GoogleAuthProvider();
-      this.afAuth.signInWithPopup(provider).then((u) => {
-        
-        this.uid = u.user.uid;
-        this.user.email = u.user.email;
-        this.user.name = u.user.displayName;
-        this.user.photoURL = u.user.photoURL;
-        this.isLogin = true;
+  checkCurrentUser() {
+    return this.user$ = this.afAuth.authState.pipe(
+      switchMap(user => {
+        if (user) {
+          return this.db.doc<User>(`users/${user.uid}`).valueChanges();
+        } else {
+          return of(null);
+        }
       })
-    })
+    );
   }
 
+  async logOut() {
+    await this.afAuth.signOut();
+    return this.router.navigate(['/']);
+  }
+
+  updateUserData({ uid, email, photoURL }: User) {
+    const userRef: AngularFirestoreDocument<User> = this.db.doc(`users/${uid}`);
+    const data = {
+      uid,
+      email,
+      photoURL
+    };
+    return userRef.set(data, { merge: true });
+  }
+
+
 }
 
-interface User {
-  email: string,
-  name: string,
-  photoURL: string,
-}
