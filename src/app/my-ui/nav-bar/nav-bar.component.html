@@ -1,4 +1,8 @@
-<mat-toolbar>
+<div *ngIf="afAuth.user | async; then authenticated else guest">
+</div>
+
+<ng-template #guest>
+  <mat-toolbar>
     <mat-toolbar-row>
         <div class="nav-bar-container">
             <div class="nav-bar-left">
@@ -22,3 +26,38 @@
         </div>
     </mat-toolbar-row>
 </mat-toolbar>
+</ng-template>
+
+<ng-template #authenticated>
+  <mat-toolbar>
+    <mat-toolbar-row>
+        <div class="nav-bar-container">
+            <div class="nav-bar-left">
+                <div class="header-link-1">
+                   <button mat-button (click)="router.navigate(['home'])">Home</button>
+                </div>
+                <div class="heder-link-2">
+                  <button mat-button (click)="router.navigate(['menu'])">Menu</button>
+                </div>
+                <div class="header-link-2">
+                  <button mat-button>About Us</button>
+                </div>
+            </div>
+            <div class="logo">
+                <img src="../../../assets/logo.png" style="width: 100%; height: 70%; align-self: center; cursor: pointer;" (click)="router.navigate(['home'])" >
+            </div>
+            <div class="nav-bar-right">
+              <button mat-button>  <mat-icon (click)="openDialog()">shopping_cart</mat-icon>   </button>
+              <button mat-button class="center" [matMenuTriggerFor]="menu">
+                <img [src]='avt' style="width: 50px; border-radius: 50% ">
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="signout()" class="signout">Sign Out</button>
+              </mat-menu>
+            </div>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+</ng-template>
+
+
