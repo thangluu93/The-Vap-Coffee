@@ -4,6 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { CartDialogComponent } from '../cart-dialog/cart-dialog.component';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-nav-bar',
@@ -13,19 +15,29 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(public router:Router,public dialog:MatDialog,public msg:MessengerService,public authService:AuthService) { }
+  constructor(
+    public router:Router,
+    public dialog:MatDialog,
+    public msg:MessengerService,
+    public auth:AuthService,
+    public afAuth: AngularFireAuth,
+    public snackBar: MatSnackBar,
+    ) { }
 
+    avt = '';
   ngOnInit(): void {
+    this.afAuth.user.subscribe((users) => {
+         this.avt = users.photoURL;
+    });
   }
 
-  onClickLogin(){
-   this.router.navigate (['/login']);
+  signout(){
+    return this.afAuth.signOut().then(() =>{
+      this.router.navigate(['home']);
+    })
   }
 
-  onClickHome(){
-    this.router.navigate([''])
-  }
-  
+
   openDialog(): void {
     const dialogRef = this.dialog.open(CartDialogComponent, {
       width: '250px',

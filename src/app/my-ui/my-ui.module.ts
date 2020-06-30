@@ -12,10 +12,18 @@ import { CartItemComponent } from './cart-item/cart-item.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { CartDialogComponent } from './cart-dialog/cart-dialog.component';
 
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
-  declarations: [NavBarComponent, ProductItemComponent, ProductListComponent, CartItemComponent, CartDialogComponent],
+  declarations: [
+    NavBarComponent,
+    ProductItemComponent,
+    ProductListComponent,
+    CartItemComponent,
+    CartDialogComponent,
+  ],
+
   imports: [
     CommonModule,
     MatToolbarModule,
@@ -24,7 +32,15 @@ import { CartDialogComponent } from './cart-dialog/cart-dialog.component';
     FlexLayoutModule,
     MatDialogModule,
     MatCardModule,
+    MatMenuModule
   ],
-  exports: [NavBarComponent, ProductItemComponent, ProductListComponent, CartItemComponent,CartDialogComponent]
+  exports: [
+    NavBarComponent,
+    ProductItemComponent,
+    ProductListComponent,
+    CartItemComponent,
+    CartDialogComponent,
+  ]
+
 })
 export class MyUiModule { }

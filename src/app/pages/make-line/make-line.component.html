@@ -1,1 +1,44 @@
-<p>make-line works!</p>
+
+<app-nav-bar></app-nav-bar>
+<div class="container">
+  <mat-card class="imformation">
+    <mat-card-header>
+      <p> Order Information</p>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field appearance="outline" style="width:100%">
+        <mat-label>Delivery address</mat-label>
+        <input matInput placeholder="Placeholder" required autocomplete="off">
+        <mat-icon matSuffix>room</mat-icon>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline" style="width: 45%;">
+        <mat-label>Customer name</mat-label>
+        <input matInput placeholder="Placeholder" required autocomplete="off">
+        <mat-icon matSuffix>account_circle</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 45%; margin-left: 10%;">
+        <mat-label>Phone number</mat-label>
+        <input matInput placeholder="Placeholder" required autocomplete="off">
+        <mat-icon matSuffix>call</mat-icon>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Note</mat-label>
+        <input matInput placeholder="Placeholder" required autocomplete="off">
+        <mat-icon matSuffix>note</mat-icon>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="inf-order">
+    <mat-card-header>
+      <button mat-button class="btn-order">Order</button>
+    </mat-card-header>
+    <mat-card-content class="order-title">
+      <h4>Name of drinks:</h4>
+      <h4>Total:</h4>
+    </mat-card-content>
+  </mat-card>
+
+</div>

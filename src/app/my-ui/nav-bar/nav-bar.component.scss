@@ -7,23 +7,6 @@ mat-toolbar-row {
   height: 100%;
 }
 
-a {
-  text-decoration: none;
-}
-
-button :focus {
-  outline: none;
-  background: none;
-  border: none;
-}
-
-button {
-  background: none;
-  border: none;
-  outline: none;
-
-}
-
 .nav-bar-container {
   padding: 0 20px;
   height: 100%;
@@ -41,6 +24,8 @@ button {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
 }
 
 .nav-bar-right {
@@ -61,6 +46,3 @@ button {
   text-align: center;
 }
 
-a {
-  text-decoration: white;
-}

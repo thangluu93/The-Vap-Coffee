@@ -1,38 +1,23 @@
-section {
-    display: table;
-    margin: 8px;
-  }
-  
-  .example-label {
-    display: table-cell;
-    font-size: 14px;
-    margin-left: 8px;
-    width: 120px;
-  }
-  
-  .example-button-row {
-    display: table-cell;
-  }
-  
-  .example-button-row button {
-    display: table-cell;
-    margin-right: 8px;
-  }
-  
-  .example-flex-container {
-    display: flex;
-    justify-content: space-around;
-    width: 480px;
-  }
-  
-  .example-button-container {
-    display: flex;
-    justify-content: center;
-    width: 120px;
+.slider{
+  width: 100%;
+  height: 100%;
+  background-image: url(../../../assets/img-home/1.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: slide 15s infinite;
+}
+
+@keyframes slide{
+  33%{
+    background-image: url(../../../assets/img-home/1.png);
   }
 
-  .container{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+ 33%{
+    background-image: url(../../../assets/img-home/2.png);
   }
+
+  33%{
+    background-image: url(../../../assets/img-home/3.png);
+  }
+}
+

@@ -1,0 +1,35 @@
+mat-card{
+  margin: 0 auto;
+  margin-top: 5%;
+  width: 30%;
+  height: 58%;
+  border: 1px solid black;
+}
+mat-card-header{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 4%;
+  font-size: 30px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+mat-form-field{
+  width: 70%;
+  margin-left: 15% ;
+}
+
+mat-icon{
+  outline: none;
+  border: none;
+}
+
+.btnsg-up-in{
+  border: 1px solid lightgray;
+}
+
+.btn-google{
+  border: 1px solid lightgray;
+  width: 70%;
+}

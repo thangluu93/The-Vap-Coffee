@@ -15,13 +15,4 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  isLogin = false;
-
-  async loginWithGoogle() {
-    await this.auth.loginWithGoogle().then((u) => {
-      console.log(u);
-      this.router.navigate(['']);
-    })
-  }
 }
