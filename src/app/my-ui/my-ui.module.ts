@@ -11,7 +11,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { CartDialogComponent } from './cart-dialog/cart-dialog.component';
-import { FooterComponent } from './footer/footer.component';
+
 import {MatMenuModule} from '@angular/material/menu';
 
 
@@ -22,7 +22,7 @@ import {MatMenuModule} from '@angular/material/menu';
     ProductListComponent,
     CartItemComponent,
     CartDialogComponent,
-    FooterComponent],
+  ],
 
   imports: [
     CommonModule,
@@ -40,7 +40,6 @@ import {MatMenuModule} from '@angular/material/menu';
     ProductListComponent,
     CartItemComponent,
     CartDialogComponent,
-    FooterComponent
   ]
 
 })
