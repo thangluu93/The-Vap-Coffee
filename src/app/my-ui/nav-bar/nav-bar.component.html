@@ -47,7 +47,8 @@
                 <img src="../../../assets/logo.png" style="width: 100%; height: 70%; align-self: center; cursor: pointer;" (click)="router.navigate(['home'])" >
             </div>
             <div class="nav-bar-right">
-              <button mat-button>  <mat-icon (click)="openDialog()">shopping_cart</mat-icon>   </button>
+              <mat-icon [(matBadge)]="msg.cart.length" (click)="openDialog()" >shopping_cart</mat-icon> 
+             <!-- <mat-icon matBadge="15" matBadgeColor="warn">home</mat-icon>  -->
               <button mat-button class="center" [matMenuTriggerFor]="menu">
                 <img [src]='avt' style="width: 50px; border-radius: 50% ">
               </button>

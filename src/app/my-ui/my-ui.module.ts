@@ -11,6 +11,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { CartDialogComponent } from './cart-dialog/cart-dialog.component';
+import {MatBadgeModule} from '@angular/material/badge';
 
 import {MatMenuModule} from '@angular/material/menu';
 
@@ -31,6 +32,7 @@ import {MatMenuModule} from '@angular/material/menu';
     MatButtonModule,
     FlexLayoutModule,
     MatDialogModule,
+    MatBadgeModule,
     MatCardModule,
     MatMenuModule
   ],

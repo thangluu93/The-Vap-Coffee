@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { Product } from 'src/app/models/product';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -16,12 +17,12 @@ export class CartDialogComponent implements OnInit {
   ];
 
   cartTotal = 0;
-  constructor(private msg: MessengerService, public http: HttpClient) { }
+  constructor(private msg: MessengerService, public http: HttpClient,private auth:AuthService) { }
 
   ngOnInit(): void {
 
     this.cartItem= this.msg.getMsg();
-
+    this.checkoutCart()
     
   }
 
@@ -49,8 +50,22 @@ export class CartDialogComponent implements OnInit {
   }
 
 
+
   checkoutCart() {
-    this.msg.checkoutCart();
+    
+    this.auth.user$.pipe().subscribe((a)=>{
+      console.log(a);
+      
+    })
+      
+   
+    // if (this.auth.user$!=null) {
+    //   this.msg.checkoutCart();
+    //   console.log('checkout');
+    // }else{
+    //   console.log("not loggin");
+      
+    // }
   }
 }
 

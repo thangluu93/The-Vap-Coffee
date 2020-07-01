@@ -6,6 +6,7 @@ import { MessengerService } from 'src/app/services/messenger.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {Product} from './../../models/product'
 
 @Component({
   selector: 'app-nav-bar',
@@ -16,23 +17,40 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class NavBarComponent implements OnInit {
 
   constructor(
-    public router:Router,
-    public dialog:MatDialog,
-    public msg:MessengerService,
-    public auth:AuthService,
+    public router: Router,
+    public dialog: MatDialog,
+    public msg: MessengerService,
+    public auth: AuthService,
     public afAuth: AngularFireAuth,
     public snackBar: MatSnackBar,
-    ) { }
+  ) {
+    this.getCartQty();
+    // console.log(this.msg.cart);
+    // console.log(this.cart);
+   }
 
-    avt = '';
+  hidden = false;
+
+  toggleBadgeVisibility() {
+    this.hidden = !this.hidden;
+  }
+
+  cart=[];
+  getCartQty(){
+    this.cart=this.msg.getMsg();
+    console.log(this.cart);
+    
+  }
+
+  avt = '';
   ngOnInit(): void {
     this.afAuth.user.subscribe((users) => {
-         this.avt = users.photoURL;
+      this.avt = users.photoURL;
     });
   }
 
-  signout(){
-    return this.afAuth.signOut().then(() =>{
+  signout() {
+    return this.afAuth.signOut().then(() => {
       this.router.navigate(['home']);
     })
   }
@@ -41,7 +59,7 @@ export class NavBarComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(CartDialogComponent, {
       width: '250px',
-      data: this.msg.getMsg()
+      data: this.msg.cart
     });
 
     dialogRef.afterClosed().subscribe(result => {

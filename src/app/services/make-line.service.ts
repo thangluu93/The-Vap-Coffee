@@ -16,9 +16,6 @@ export class MakeLineService {
     this.orderCollection=this.db.collection<Order>('orders')
   }
 
-  setupSocketConnection() {
-    this.socket = io(environment.ENPOINT);
-  }
 
   getOrderFromServer() {
     this.orderCollection.snapshotChanges()

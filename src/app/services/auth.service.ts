@@ -5,6 +5,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
 import { switchMap } from 'rxjs/operators';
+import { auth } from 'firebase';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,10 +15,11 @@ export class AuthService {
     private afAuth: AngularFireAuth,
     private db: AngularFirestore,
     private router: Router) {
+    this.checkCurrentUser()
   }
 
   user$: Observable<any>;
-
+  isLogin = true;
   checkCurrentUser() {
     return this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
@@ -28,6 +30,14 @@ export class AuthService {
         }
       })
     );
+  }
+
+  async loginWithGoogle() {
+    const provider = new auth.GoogleAuthProvider();
+    const credetial = await this.afAuth.signInWithPopup(provider);
+    return this.updateUserData(credetial.user);
+    // return credetial.user;
+
   }
 
   async logOut() {

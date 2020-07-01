@@ -11,7 +11,6 @@ export class MakeLineComponent implements OnInit {
   constructor(public makeline:MakeLineService) { }
 
   ngOnInit(): void {
-     this.makeline.setupSocketConnection();
      this.makeline.getOrderFromServer();
   }
 

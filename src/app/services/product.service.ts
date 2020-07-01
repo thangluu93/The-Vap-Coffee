@@ -20,9 +20,9 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  // getProduct():Product[]{
-  //   return this.products;
-  // }
+  getProduct():Product[]{
+    return this.products;
+  }
 
 
 
