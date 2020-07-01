@@ -3,6 +3,9 @@ import { MessengerService } from 'src/app/services/messenger.service';
 import { Product } from 'src/app/models/product';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -17,13 +20,13 @@ export class CartDialogComponent implements OnInit {
   ];
 
   cartTotal = 0;
-  constructor(private msg: MessengerService, public http: HttpClient, private auth: AuthService) { }
+  constructor(private msg: MessengerService, public http: HttpClient, private auth: AuthService, public snackBar: MatSnackBar, public router: Router, public dialog: MatDialog,) { }
 
   ngOnInit(): void {
 
     this.cartItem = this.msg.getMsg();
     this.checkUser();
-    this.checkoutCart();
+    // this.checkoutCart();
 
   }
 
@@ -31,7 +34,7 @@ export class CartDialogComponent implements OnInit {
   checkUser() {
     this.auth.user$.subscribe((data) => {
       this.user = data;
-      console.log(this.user);
+      // console.log(this.user);
 
     });
   }
@@ -61,12 +64,18 @@ export class CartDialogComponent implements OnInit {
 
 
 
-  checkoutCart() {
+  async checkoutCart() {
     if (this.user != null) {
-      this.msg.checkoutCart();
-      console.log('checkout');
+      await this.msg.checkoutCart();
+      console.log("checkout");
+      this.dialog.closeAll();
+      this.router.navigate(["home"]);
+      // this.snackBar.open('Success!', 'OK', {duration: 2000});
     } else {
-      console.log("not loggin");
+      // this.snackBar.open('Not Loggin yet!', 'OK', {duration: 2000});
+      console.log("notlogin");
+
+      // this.router.navigate(["login"]);
     }
   }
 }

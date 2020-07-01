@@ -8,19 +8,30 @@ import { MakeLineService } from 'src/app/services/make-line.service';
 })
 export class MakeLineComponent implements OnInit {
   constructor(public makeline: MakeLineService) {
-    this.makeline.getOrderFromServer();
+    // this.makeline.getOrderFromServer();
     this.getOrder();
-    console.log(this.orders);
+
+
   }
 
-  ngOnInit(): void {}
-  orders = [];
+  ngOnInit(): void { }
+  allOrders;
   getOrder() {
-    this.makeline.getOrderFromServer().subscribe((data) => {
-      data.docs.map((e) => {
-        this.orders.push(e.data());
-        console.log(this.orders)
-      });
+    return this.makeline.getOrderFromServer().subscribe(data => {
+      this.allOrders = data.map(e => e.payload.doc.data())
     });
+
+  }
+  test() {
+    console.log(this.allOrders);
+
+  }
+
+  done(id){
+    this.makeline.update(id);
+  }
+
+  cancel(id){
+    this.makeline.delete(id);
   }
 }

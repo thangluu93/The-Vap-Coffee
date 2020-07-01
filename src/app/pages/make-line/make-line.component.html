@@ -1,11 +1,20 @@
-
 <app-nav-bar></app-nav-bar>
-<div class="container">
-  <mat-card class="imformation" *ngFor="let order of orders">
+<div class="container" *ngFor="let order of allOrders">
+  <mat-card class="example-card" style="width: 60vw;" *ngIf="order.status==='doing'">
+
     <mat-card-header>
-      <p>{{order.id}}</p>
+      <mat-card-title>No. {{order.id}}</mat-card-title>
+
     </mat-card-header>
-    <mat-card-content>
+    <mat-card-content *ngFor="let cart of order.cart">
+      <p>
+        {{cart.name}} x {{cart.qty}}
+      </p>
     </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-button style="margin-left: 5%;" (click)="done(order.customer)">DONE</button>
+      <button mat-button style="margin-left: 5%;" (click)="cancel(order.customer)">CANCEL ORDER</button>
+    </mat-card-actions>
   </mat-card>
 </div>

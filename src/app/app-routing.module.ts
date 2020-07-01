@@ -8,6 +8,7 @@ const routes: Routes = [
   {path: 'login', loadChildren: () => import('./pages/login-page/login-page.module').then(m => m.LoginPageModule) },
   {path: 'makeline', loadChildren: () => import('./pages/make-line/make-line.module').then(m => m.MakeLineModule) },
   { path: 'menu', loadChildren: () => import('./pages/menu/menu.module').then(m => m.MenuModule) },
+  { path: 'yourOrder', loadChildren: () => import('./my-ui/your-oder/your-oder.component').then(m => m.YourOderComponent) },
 ];
 
 @NgModule({
