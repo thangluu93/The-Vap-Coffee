@@ -11,14 +11,16 @@ export class MakeLineService {
   orders = [];
   orderCollection: AngularFirestoreCollection<Order> = null;
   constructor(public http: HttpClient, private db: AngularFirestore) {
-    this.orderCollection = this.db.collection<Order>('orders')
+    this.orderCollection = this.db.collection('orders')
   }
 
 
   order$: Observable<any>
   getOrderFromServer() {
-    return this.order$ = this.orderCollection.snapshotChanges()
+    return this.orderCollection.get();
   }
+
+
 
 
 }

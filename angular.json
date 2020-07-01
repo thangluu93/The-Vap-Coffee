@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "theVapCoffee"
+    }
+  },
+  "defaultProject": "theVapCoffee",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -1,22 +1,11 @@
 
 <app-nav-bar></app-nav-bar>
 <div class="container">
-  <mat-card class="imformation">
+  <mat-card class="imformation" *ngFor="let order of orders">
     <mat-card-header>
-      <p> Order Information</p>
+      <p>{{order.id}}</p>
     </mat-card-header>
     <mat-card-content>
     </mat-card-content>
   </mat-card>
-
-  <mat-card class="inf-order">
-    <mat-card-header>
-      <button mat-button class="btn-order">Order</button>
-    </mat-card-header>
-    <mat-card-content class="order-title">
-      <h4>Name of drinks:</h4>
-      <h4>Total:</h4>
-    </mat-card-content>
-  </mat-card>
-
 </div>
