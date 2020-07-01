@@ -17,13 +17,23 @@ export class CartDialogComponent implements OnInit {
   ];
 
   cartTotal = 0;
-  constructor(private msg: MessengerService, public http: HttpClient,private auth:AuthService) { }
+  constructor(private msg: MessengerService, public http: HttpClient, private auth: AuthService) { }
 
   ngOnInit(): void {
 
-    this.cartItem= this.msg.getMsg();
-    this.checkoutCart()
-    
+    this.cartItem = this.msg.getMsg();
+    this.checkUser();
+    this.checkoutCart();
+
+  }
+
+  user;
+  checkUser() {
+    this.auth.user$.subscribe((data) => {
+      this.user = data;
+      console.log(this.user);
+
+    });
   }
 
   addProductTocart(product: Product) {
@@ -52,20 +62,12 @@ export class CartDialogComponent implements OnInit {
 
 
   checkoutCart() {
-    
-    this.auth.user$.pipe().subscribe((a)=>{
-      console.log(a);
-      
-    })
-      
-   
-    // if (this.auth.user$!=null) {
-    //   this.msg.checkoutCart();
-    //   console.log('checkout');
-    // }else{
-    //   console.log("not loggin");
-      
-    // }
+    if (this.user != null) {
+      this.msg.checkoutCart();
+      console.log('checkout');
+    } else {
+      console.log("not loggin");
+    }
   }
 }
 
