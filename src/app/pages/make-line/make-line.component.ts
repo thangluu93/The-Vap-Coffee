@@ -8,10 +8,12 @@ import { MakeLineService } from 'src/app/services/make-line.service';
 })
 export class MakeLineComponent implements OnInit {
 
-  constructor(public makeline:MakeLineService) { }
+  constructor(public makeline:MakeLineService) {
+    this.makeline.getOrderFromServer();
+   }
 
   ngOnInit(): void {
-     this.makeline.getOrderFromServer();
+    
   }
 
 }
